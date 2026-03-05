@@ -46,3 +46,37 @@ class Solution
     
     }
 }
+
+//using a third list to store the result
+
+public static SinglyLinkedList Merge(SinglyLinkedList head1,SinglyLinkedList head2)
+{
+        Node first = head1.head;
+        Node second = head2.head;
+        SinglyLinkedList list = new SinglyLinkedList();
+
+        while(first!=null && second!=null)
+        {
+            if(first.value<second.value)
+            {
+                list.insertLast(first.value);
+                first=first.next;
+            }
+            else
+            {
+                list.insertLast(second.value);
+                second=second.next;
+            }
+        }
+        while(first!=null)
+        {
+            list.insertLast(first.value);
+            first=first.next;
+        }
+        while(second!=null)
+        {
+            list.insertLast(second.value);
+            second=second.next;
+        }
+        return list;
+    }
